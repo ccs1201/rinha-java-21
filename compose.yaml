@@ -1,9 +1,34 @@
 services:
   postgres:
     image: 'postgres:latest'
+    hostname: postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: '0.75GB'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - POSTGRES_DB=rinha
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432'
+      - '5432:5432'
+
+  api1: # API - Instância 01
+    image: rinha-java21-ccs1201:0.0.1
+    hostname: api1
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: '1.75GB'
+    ports:
+      - '9999:8080'
+
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8088:8080
