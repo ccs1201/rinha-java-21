@@ -65,6 +65,6 @@ public class PessoaController {
     @ResponseStatus(OK)
     public CompletableFuture<Long> contarPessoas() {
         return CompletableFuture
-                .supplyAsync(() -> repository.count(), newVirtualThreadPerTaskExecutor());
+                .supplyAsync(repository::count, newVirtualThreadPerTaskExecutor());
     }
 }

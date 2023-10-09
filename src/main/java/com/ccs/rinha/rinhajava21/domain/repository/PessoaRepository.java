@@ -17,17 +17,17 @@ public interface PessoaRepository extends JpaRepository<Pessoa, UUID> {
     Optional<Pessoa> findByIdEager(UUID id);
 
     @Query(value = """
-            from Pessoa p 
-            left join fetch p.stack 
-            where p.id in (          
-            select p.id from Pessoa p 
-            left join p.stack s 
-            where (:nome is null or lower(p.nome) like lower(concat('%', :nome, '%'))) 
-            and 
-            (:apelido is null or lower(p.apelido) like lower(concat('%', :apelido, '%'))) 
-            and 
-            (:stack is null or lower(s) like lower(concat('%', :stack, '%'))) 
-            )           
+            from Pessoa p
+            left join fetch p.stack
+            where p.id in (
+            select p.id from Pessoa p
+            left join p.stack s
+            where (:nome is null or lower(p.nome) like lower(concat('%', :nome, '%')))
+            and
+            (:apelido is null or lower(p.apelido) like lower(concat('%', :apelido, '%')))
+            and
+            (:stack is null or lower(s) like lower(concat('%', :stack, '%')))
+            )
              """)
     List<Pessoa> findByTermo(String nome, String apelido, String stack, PageRequest pageRequest);
 }
