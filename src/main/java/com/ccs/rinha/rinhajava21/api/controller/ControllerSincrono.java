@@ -15,11 +15,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.TimeUnit;
 
-import static java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor;
 import static org.springframework.http.HttpStatus.*;
 
 //@RestController
@@ -50,7 +46,7 @@ public class ControllerSincrono {
     }
 
     @GetMapping("/pessoas/{id}")
-    public Pessoa findById(@PathVariable @NotNull UUID id) throws InterruptedException {
+    public Pessoa findById(@PathVariable @NotNull UUID id) {
 
         return repository.findByIdEager(id)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND));

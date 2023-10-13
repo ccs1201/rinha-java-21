@@ -3,13 +3,11 @@ package com.ccs.rinha.rinhajava21.api.infrastructure;
 import com.ccs.rinha.rinhajava21.domain.entity.Pessoa;
 import com.ccs.rinha.rinhajava21.domain.repository.PessoaRepository;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 

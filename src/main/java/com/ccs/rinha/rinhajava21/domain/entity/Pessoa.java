@@ -3,7 +3,6 @@ package com.ccs.rinha.rinhajava21.domain.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 

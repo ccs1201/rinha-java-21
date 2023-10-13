@@ -8,7 +8,6 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public record PessaoInput(@NotBlank @Size(max = 100) String nome,
                           @NotBlank @Size(max = 32) String apelido,
@@ -17,8 +16,6 @@ public record PessaoInput(@NotBlank @Size(max = 100) String nome,
 
     public Pessoa toPessoa() {
 
-        var sb = new StringBuilder();
-        //reduce(0, (a, b) -> a+b)
         return new Pessoa(UUID.randomUUID(), nome, apelido, nascimento,
                 stack.stream()
                         .reduce("", (s, s2) -> s.concat(s2).concat(",")));
