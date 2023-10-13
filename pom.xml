@@ -28,6 +28,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <!-- Use Undertow instead -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
